@@ -1,5 +1,7 @@
 using Q3Movement;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -89,8 +91,20 @@ public class EnemyAI : MonoBehaviour
         }        
     }
 
-    protected void Attack(GameObject AttackTarget) {
-        Debug.Log("Attack");
+    protected virtual void Attack(GameObject AttackTarget)
+    {
+        StartCoroutine(AttackCoroutine(AttackTarget));
+    }
+
+    protected virtual IEnumerator AttackCoroutine(GameObject AttackTarget)
+    {
+        yield return new WaitForSeconds(config.AttackWindupTime);
+
+        AttackEffect(AttackTarget);        
+    }
+
+    protected virtual void AttackEffect(GameObject AttackTarget) {
+        Debug.Log("Attack " + AttackTarget.name);
     }
 
     bool CheckForTarget() {
@@ -118,6 +132,7 @@ public class EnemyAI : MonoBehaviour
         public float AttackRange;
         public float MoveawayRange;
         public float AttacksPerSecond;
+        public float AttackWindupTime;
         public float AttackWaitTime;
     }
 }

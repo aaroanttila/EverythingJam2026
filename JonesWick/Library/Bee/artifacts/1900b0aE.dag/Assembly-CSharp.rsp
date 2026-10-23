@@ -445,6 +445,8 @@
 "Assets/MouseLook.cs"
 "Assets/PlayerMovement.cs"
 "Assets/Q3PlayerController.cs"
+"Assets/RunningEnemy.cs"
+"Assets/ShootingEnemy.cs"
 "Assets/Timer.cs"
 -langversion:9.0
 /deterministic
