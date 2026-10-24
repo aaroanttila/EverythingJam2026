@@ -135,6 +135,7 @@
 -define:ENABLE_TERRAIN
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
+-define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 -define:TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER
@@ -439,10 +440,14 @@
 -analyzer:"C:/Program Files/Unity60003/Editor/Data/Tools/BuildPipeline/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity60003/Editor/Data/Tools/BuildPipeline/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"C:/Program Files/Unity60003/Editor/Data/Tools/BuildPipeline/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
+"Assets/Effects.cs"
 "Assets/EnemyAI.cs"
+"Assets/EnemyHP.cs"
 "Assets/GunStuff.cs"
+"Assets/HP.cs"
 "Assets/MakeViewModelFollowCameraWTF.cs"
 "Assets/MouseLook.cs"
+"Assets/PlayerHP.cs"
 "Assets/PlayerMovement.cs"
 "Assets/Q3PlayerController.cs"
 "Assets/RunningEnemy.cs"

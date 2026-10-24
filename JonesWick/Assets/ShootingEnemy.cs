@@ -13,7 +13,7 @@ public class ShootingEnemy : EnemyAI
 
     Vector3 LastAttackPos = new Vector3(0, -100, 0);
 
-    protected override void AttackEffect(GameObject AttackTarget)
+    protected override void AttackEffect(GameObject AttackTarget, Vector3 AttackPoint)
     {
         Vector3 ToTarget = AttackTarget.transform.position - transform.position;
 
@@ -32,6 +32,8 @@ public class ShootingEnemy : EnemyAI
             Pos += Dir.normalized * ProjectileSpeed * Time.deltaTime;
 
 
+            Effects.Particle("Particle 1", Pos, 1, transform);
+
             Debug.DrawLine(Pos, transform.position + Vector3.up);   
             LastAttackPos = Pos;
 
@@ -41,9 +43,9 @@ public class ShootingEnemy : EnemyAI
 
             foreach (Collider c in hits)
             {
-                if (c.GetComponentInParent<Q3PlayerController>())
+                if (c.GetComponentInParent<HP>())
                 {
-                    SceneManager.LoadScene(1);
+                    c.GetComponentInParent<HP>().takeDamage(1);
                 }
 
                 hitSomething = true;    

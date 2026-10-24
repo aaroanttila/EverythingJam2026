@@ -11,6 +11,7 @@ public class GunStuff : MonoBehaviour
     public Transform GunShootPointUIElement;
 
     public Vector3 ShootKnockback;
+    public float ShootKnockbackToOther;
 
     public Rigidbody rb;
 
@@ -43,6 +44,21 @@ public class GunStuff : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)) {
             rb.AddForceAtPosition(transform.rotation * ShootKnockback, GunShootPoint.position, ForceMode.Impulse);
+
+            if (hit.collider != null) {
+                HP hp = hit.collider.gameObject.GetComponentInParent<HP>();
+                
+                if (hp != null) {
+                    hp.takeDamage(1);
+                }
+
+                Rigidbody otherRb = hit.collider.gameObject.GetComponentInParent<Rigidbody>();
+
+                if (otherRb != null)
+                {
+                    otherRb.AddForceAtPosition(GunShootPoint.forward * ShootKnockbackToOther, hit.point, ForceMode.Impulse);
+                }
+            }
         }
     }
 }

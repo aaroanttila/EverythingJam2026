@@ -77,7 +77,7 @@ public class EnemyAI : MonoBehaviour
 
                         SetWaitTimer(config.AttackWaitTime);
 
-                        Attack(Target);
+                        Attack(Target, Target.transform.position);
 
 
                     }
@@ -91,19 +91,19 @@ public class EnemyAI : MonoBehaviour
         }        
     }
 
-    protected virtual void Attack(GameObject AttackTarget)
+    protected virtual void Attack(GameObject AttackTarget, Vector3 AttackPoint)
     {
-        StartCoroutine(AttackCoroutine(AttackTarget));
+        StartCoroutine(AttackCoroutine(AttackTarget, AttackPoint));
     }
 
-    protected virtual IEnumerator AttackCoroutine(GameObject AttackTarget)
+    protected virtual IEnumerator AttackCoroutine(GameObject AttackTarget, Vector3 AttackPoint)
     {
         yield return new WaitForSeconds(config.AttackWindupTime);
 
-        AttackEffect(AttackTarget);        
+        AttackEffect(AttackTarget, AttackPoint);        
     }
 
-    protected virtual void AttackEffect(GameObject AttackTarget) {
+    protected virtual void AttackEffect(GameObject AttackTarget, Vector3 AttackPoint) {
         Debug.Log("Attack " + AttackTarget.name);
     }
 
